@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css">
+    <title>Register</title>
+
+    <style>
+        /* font family is added */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(255, 245, 189);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 25vw;
+        }
+
+        h1,
+        p {
+            text-align: center;
+        }
+
+
+
+        /* more styles added to beautify the input fields */
+        input {
+            margin: 0.25em 0em 1em 0em;
+            outline: none;
+            padding: 0.5em;
+            border: none;
+            background-color: rgb(225, 225, 225);
+            border-radius: 0.25em;
+            color: black;
+        }
+
+        /* styles for button */
+        button {
+            padding: 0.75em;
+            border: none;
+            outline: none;
+            background-color: rgb(68, 18, 232);
+            color: white;
+            border-radius: 0.25em;
+        }
+
+        /* hover functionality for button */
+        button:hover {
+            cursor: pointer;
+            background-color: rgb(41, 4, 164);
+        }
+
+        .radio_menu {
+            margin: 5%;
+        }
+
+        ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(111, 0, 255);
+  }
+
+
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+    background-color: rgb(8, 200, 248);
+  }
+
+  .active {
+    background-color: #007558;
+  }
+    </style>
+</head>
+
+</head>
+
+<body>
+    <ul>
+        <li style="float: left;"><a class="active" href="hospital.html">Home</a></li>
+        <li style="float: left;"><a href="appointment.html">Appointment</a></li>
+        <li style="float: left;"><a href="registration.html">Registration</a></li>
+        <li style="float: left;"><a href="#contact">Contact</a></li>
+        <li style="float: left;"><a href="#about">About</a></li>
+      </ul>
+    <form>
+        <!-- class named "container" is assigned to div -->
+        <div class="container">
+            <h1>Register</h1>
+            <p>Kindly fill in this form to register.</p>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter username" name="username" id="username" required />
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required />
+
+            <label for="pwd"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pwd" id="pwd" required />
+
+            <label for="pwd-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="pwd-repeat" id="pwd-repeat" required />
+            <div class="radio_menu">
+                <label for="gender"><b>Gender</b></label><br>
+                <input type="radio" name="gender" value="Male"> Male <br>
+                <input type="radio" name="gender" value="female">Female <br>
+                <input type="radio" name="gender" value="Other">Other <br>
+
+                <p>Kindly Select the Services</p>
+                <input type="checkbox" name="service1" value="Eye checkup">Eye Checkup<br>
+                <input type="checkbox" name="service2" value="eye_tst">Eye test<br>
+                <input type="checkbox" name="service3" value="sugar_tst">Sugar Test<br>
+                <input type="checkbox" name="service4" value="body_check">Full Body Checkup<br>
+                <input type="checkbox" name="service5" value="consult">Consultation<br>
+            </div>
+            <button type="submit">Register</button>
+        </div>
+
+        <div>
+            <p>Already have an account? <a href="#">Log in</a>.</p>
+        </div>
+    </form>
+
+
+</body>
+
+</html>
