@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <title>salient features of HTML5.</title>
+    <script>
+      function myfunc()  
+      {var canvas=document.getElementById('mycanvas');
+      var ctx = canvas.getContext("2d");
+      ctx.font = "30px Arial";
+      ctx.fillText(" Hospital Management  ", 10, 50);
+      }
+      
+      function getposition()
+      { var x=document.getElementById('locate');
+        if(navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition)
+        }
+        else
+        x.innerHTML="Geolocation not supported by your browser"
+      }
+      function showPosition(position)
+      { var x=document.getElementById('locate');
+        
+        x.innerHTML="Latitude "+position.coords.latitude+"<br>Longitude "+position.coords.longitude;
+      }
+    </script>
+</head>
+<body bgcolor="skyblue">
+    <label></label>
+     <canvas id="mycanvas" onmouseover="myfunc()" height="70px" width="500px" style="border:10px blue double">
+    </canvas>
+    <br/>
+    <label>This is audio</label>
+    <audio controls autoplay muted>
+        <source src="sampleaudio.mp3" type="audio/ogg">
+        <source src="sampleaudio.mp3" type="audio/wav">
+        <source src="sampleaudio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <br/>
+    <label>This is video</label>
+    <video  autoplay muted width="40%" height="40%">
+        <source src="sample.ogg" type="video/ogg">
+        <source src="sample.mp4" type="video/mp4">
+        Your browser doesnt support the video element.
+    </video>
+    <br/>
+    <br/>
+    Date of join : <input type="date" name="Leave_date">
+    <br/></br>
+    Month of Admission: <input type="month" name="salary month">
+    <br/></br>
+    Number of days appointment for a patient : <input type="number" min="0" max="10">
+    <br/></br>
+    <label>Choose Domain</label>
+    <input type="text" list="mydatalist">
+    <datalist id="mydatalist">
+        <option value="Cardiology"/>
+         <option value="Oncology"/>
+         <option value="Dermatology"/>
+         <option value="Gynaecology"/>
+    </datalist>
+    <br/></br>
+    
+    <br/></br>
+    Search for your domain : <input type="search" placeholder="this is a search box" size="50">
+    <br/></br>
+    Click here for geolocation for nearby hospital : <button onclick="getposition()">Click here to get  your position</button>
+    <p id="locate"></p>
+    <a href = "https://www.google.com/search?q=near+hospital+location&rlz=1C1CHBF_enIN911IN911&ei=1B13Y5LwCpez5NoPoouiwAQ&oq=nearby+hospital+loaction+&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgAMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBQgAEIYDMgUIABCGAzIFCAAQhgM6DQgAEEcQ1gQQyQMQsAM6CggAEEcQ1gQQsAM6CAgAEJIDELADSgQIQRgASgQIRhgAUEVYRWCSGWgBcAF4AIABxgOIAcYDkgEDNC0xmAEAoAEByAEKwAEB&sclient=gws-wiz-serp">Click to view nearby hospital</a>
+</body>
+</html>
