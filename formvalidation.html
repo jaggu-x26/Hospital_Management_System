@@ -1,0 +1,423 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6); 
+        }
+        .container{
+            max-width: 700px;
+            width: 100%;
+            margin-top: 25%;
+            margin-left: 90%;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        }
+        .container .title{
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+        .container .title::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        .content form .user-details{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px 0 12px 0;
+        }
+        form .user-details .input-box{
+            margin-bottom: 15px;
+            width: calc(100% / 2 - 20px);
+        }
+        form .input-box span.details{
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .user-details .input-box input{
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid{
+            border-color: #9b59b6;
+        }
+        form .gender-details .gender-title{
+            font-size: 20px;
+            font-weight: 500;
+        }
+        form .category{
+            display: flex;
+            width: 80%;
+            margin: 14px 0 ;
+            justify-content: space-between;
+        }
+        form .category label{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        form .category label .dot{
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: #d9d9d9;
+            border: 5px solid transparent;
+            transition: all 0.3s ease;
+        }
+        #dot-1:checked ~ .category label .one,
+        #dot-2:checked ~ .category label .two,
+        #dot-3:checked ~ .category label .three{
+            background: #9b59b6;
+            border-color: #d9d9d9;
+        }
+        form input[type="radio"]{
+            display: none;
+        }
+        form .button{
+            height: 45px;
+            margin: 35px 0
+        }
+        form .button input{
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        .full{
+          width:100%;
+          height: 100vh;
+        }
+        .about{
+          width: 100%;
+          height: 90vh;
+          background-size: cover;
+          margin-top: 105%;
+          margin-right: 30%;
+          padding-top: 5%;
+        }
+        form .button input:hover{
+        /* transform: scale(0.99); */
+            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+        }
+        @media(max-width: 584px){
+        .container{
+            max-width: 100%;
+        }
+        form .user-details .input-box{
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        form .category{
+            width: 100%;
+        }
+        .content form .user-details{
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+        .user-details::-webkit-scrollbar{
+            width: 5px;
+        }
+        }
+        @media(max-width: 459px){
+        .container .content .category{
+            flex-direction: column;
+        }
+        }
+        .button1 
+        {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+
+        .button2 {background-color: #008CBA;} /* Blue */
+        .button3 {background-color: #f44336;} /* Red */ 
+        .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+        .button5 {background-color: #555555;} /* Black */
+
+        #photo{
+          height: 50%;
+          width: 40%;
+        }
+
+    </style>
+    <script>
+      function setCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime()+(days*24*60*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }
+        else var expires = "";
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+        function background(color)
+        {
+          x= document.getElementById('about');
+          x.style.backgroundColor = color;
+          setCookie("background-color", color, 365);
+
+          var img1 = document.getElementById("photo");
+          img1.src = "images/ourteam1.png";
+          setCookie("background-image", "images/ourteam1.png", 365);
+        }
+        function eraseCookie(name) {
+            setCookie(name,"",-1);
+        }
+        function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+        }
+        function remove()
+        {
+          eraseCookie('User Name');
+        }
+        function read()
+        {
+          var k = readCookie('User Name');
+          document.getElementById('h').innerHTML=k;
+        }
+        function add()
+        {
+          var color=prompt("enter the background color");
+          x= document.getElementById('about');
+          x.style.backgroundColor = color;
+          setCookie("background-color", color, 365);
+        }
+      function storeValues()  
+      {
+        setCookie("Full Name", document.getElementById('name').value,2);
+        setCookie("User Name", document.getElementById('uname').value,2);
+        setCookie("Phone Number", document.getElementById('num').value,2);
+      
+        sessionStorage.setItem("Email Address", document.getElementById('email').value);
+        if(document.getElementById('dot-1').checked)
+        {
+          localStorage.setItem("gender",document.getElementById('dot-1').value);
+        }
+        else if(document.getElementById('dot-2').checked)
+        {
+          localStorage.setItem("gender",document.getElementById('dot-2').value);
+        }
+        else if(document.getElementById('dot-3').checked)
+        {
+          localStorage.setItem("gender",document.getElementById('dot-3').value);
+        }
+      }
+      var con="Register";
+        function test()
+        {
+            var name=document.getElementById('name').value;
+            var uname=document.getElementById('uname').value;
+            var pas=document.getElementById('pas').value;
+            var cpas=document.getElementById('cp').value;
+            var email=document.getElementById('email').value;
+            var number=document.getElementById('num').value;
+            var span=document.getElementsByTagName('span');
+            
+            const regex1=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
+            const regex2= /^([a-z0-9\.-]+)@([a-z\.-]+).(christuniversity+)\.(in)$/;
+            const letters = /^[A-Za-z]+$/;
+            const numb= /^[0-9]{10}$/;
+            if(!letters.test(name))
+            {
+              span[2].innerText="Invalid full name";
+              span[2].style.color="red";
+              con="no";
+            }
+            else
+            {
+              span[2].innerText="Full Name";
+              span[2].style.color="black";
+              con="Register";
+            }
+           if(regex2.test(email))
+           {
+              span[2].innerText="Email";
+              span[2].style.color="black";
+              con="Register";
+           }
+           else
+           {
+              span[2].innerText="Invalid Email Id";
+              span[2].style.color="red";
+              con="no";
+           }
+           if(!numb.test(number))
+           {
+              span[3].innerText="Invalid Phone Number";
+              span[3].style.color="red";
+              con="no";
+           }
+           else
+           {
+              span[3].innerText="Phone Number";
+              span[3].style.color="black";
+              con="Register";
+
+           }
+            if(!regex1.test(pas))
+           {
+                span[4].innerText="Invalid password";
+                span[4].style.color="red";
+                con="no";
+           }
+           else
+           {
+                span[4].innerText="Password";
+                span[4].style.color="black";
+                if(pas != cpas)
+                {
+                    span[5].innerText="Invalid confirm password";
+                    span[5].style.color="red";
+                    con="no";
+                }
+                else
+                {
+                    span[5].innerText="Confirm Password";
+                    span[5].style.color="black";
+                    con="Register";
+                }
+           } 
+           
+        }
+        function jump()
+        {
+          if(con == "Register")
+           {
+              alert("ok");
+              storeValues();
+              return true;
+           }
+           else{
+          
+           } 
+
+        }
+    </script>
+    
+   </head>
+<body onload="background('white')">
+  <div class="full">
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="content">
+        <form onsubmit="jump()">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" placeholder="Enter your name" id="name"  onkeydown="return /[A-Za-z]/i.test(event.key)"  required>
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              <input type="text" placeholder="Enter your username" id="uname" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="email" placeholder="Enter your email" id="email" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="number" placeholder="Enter your number" id="num" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" placeholder="Enter your password" id="pas" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input type="password" placeholder="Confirm your password" id="cp" required>
+            </div>
+          </div>
+          <div class="gender-details">
+            <input type="radio" name="gender" id="dot-1" value="Male">
+            <input type="radio" name="gender" id="dot-2" value="Female">
+            <input type="radio" name="gender" id="dot-3" value="Other">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+              <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Prefer not to say</span>
+              </label>
+            </div>
+          </div>
+          <div class="button">
+            <input type="submit" value="Register" id="b1" onclick="test()">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="about" id="about"> 
+    <div class="b">
+      <button class="button1" onclick="add()">Add</button>
+      <button class="button1 button2" onclick="read()">Read</button>
+      <button class="button1 button3" onclick="remove()">Remove</button>
+    </div>
+    <br>
+    <img id="photo"/>
+    <h1 id="h"></h1> 
+  </div>
+</body>
+</html>
