@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    
+    <style>
+        body {font: 17px Calibri;}
+        #customers 
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+
+        .fixed-header, .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+        text-align: center;
+    }
+    .fixed-header{
+        top: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }
+    .col-md-10 input[type=text] 
+    {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 40%;
+        background: #f1f1f1;
+        margin-bottom: 3%;
+    }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp" 
+        ng-controller="myController">
+
+       <p>Showing data extracted from an external json file!</p>
+       <br> <br>
+       <div class="row">
+        <div class="col-md-2">
+          Search:
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="search" data-ng-model="Search" size="30" placeholder="Search for Patient_Name" />
+        </div>
+      </div>
+      <br/>
+        <table id="customers">
+            <tr>
+                <th>HID</th>
+                <th>Hospital_Name</th>
+                <th>Doctor_Name</th>
+                <th>Patient_Name</th>
+                <th>Bill</th>
+            </tr>
+
+            <tr ng-repeat="hospital in list | filter:Search | orderBy:'HID'">
+                <td>{{hospital.HID}}</td>
+                    <td>{{hospital.Hospital_Name}}</td>
+                        <td>{{hospital.Doctor_Name}}</td>
+                        <td>{{hospital.Patient_Name}}</td>
+                        <td>{{hospital.Bill}}</td>
+            </tr>
+        </table>
+        
+        
+      <hr/>
+    </div>
+    </div>
+    
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; 2019 Webelop</div>        
+    </div>
+</body>
+
+<!--The Controller-->
+<script>
+    var app = angular.module('myApp', [])
+             .filter("Patient_Name",function(){
+                return function (Patient_Name){
+                      if(Patient_Name == 1){
+                              return "Available";
+                      }
+                      else{        
+                              return "Unavailable";
+                      }
+                    
+                   }
+             });
+    app.controller('myController',
+        function ($scope, $http) {
+
+            var request = {
+                method: 'get',
+                url: 'hospital.json',
+                dataType: 'json',
+                contentType: "application/json"
+            };
+
+            $scope.arrBirds = new Array;
+            $scope.arrBirds=[],
+            $scope.currentPage = 1,
+            $scope.numPerPage = 3,
+            $scope.maxSize = 4;
+
+            $scope.orderByMe = function(hospital) {  
+        $scope.myOrderBy = hospital;
+            }
+  
+  
+
+            $http(request)
+                .success(function (jsonData) {
+                    $scope.arrBirds = jsonData;
+                    $scope.list = $scope.arrBirds;
+                })
+                .error(function () {
+
+                });
+        });
+</script>
+</html>

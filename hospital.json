@@ -1,0 +1,71 @@
+[
+    {
+       "HID": "001",
+       "Hospital_Name": "Appolo",
+       "Doctor_Name": "Jagriti Rai",
+       "Patient_Name":"Vasav Mittal",
+       "Bill":"5000"
+    },
+    {
+        "HID": "001",
+       "Hospital_Name": "Appolo",
+       "Doctor_Name": "Kush Goyal",
+       "Patient_Name":"Raman Singh",
+       "Bill":"34000"
+    },
+    {
+        "HID": "001",
+       "Hospital_Name": "Appolo",
+       "Doctor_Name": "Jagriti Rai",
+       "Patient_Name":"Aman kumar",
+       "Bill":"30000"
+    },
+    {
+        "HID": "002",
+       "Hospital_Name": "City Hospital",
+       "Doctor_Name": "Raman Singh",
+       "Patient_Name":"Raman Kaur",
+       "Bill":"34000"
+    },
+    {
+        "HID": "002",
+        "Hospital_Name": "City Hospital",
+        "Doctor_Name": "Harman Singh",
+        "Patient_Name":"Keshav Garg",
+        "Bill":"3000"
+    },
+    {   "HID": "002",
+        "Hospital_Name": "City Hospital",
+        "Doctor_Name": "Harman Singh",
+        "Patient_Name":"Lalu singh",
+        "Bill":"30000"
+    },
+    {
+        "HID": "003",
+       "Hospital_Name": "Jeevan Jyoti",
+       "Doctor_Name": "Payal Mittal",
+       "Patient_Name":"Manan singh",
+       "Bill":"3000"
+    },
+    {
+        "HID": "003",
+       "Hospital_Name": "Jeevan Jyoti",
+       "Doctor_Name": "Ritvik Goyal",
+       "Patient_Name":"Lalita ",
+       "Bill":"5000"
+    },
+    {
+        "HID": "003",
+        "Hospital_Name": "Jeevan Jyoti",
+        "Doctor_Name": "Nandini Gupta",
+        "Patient_Name":"Raj Kumar",
+        "Bill":"30000"
+    },
+    {
+        "HID": "004",
+       "Hospital_Name": "Aggarwal",
+       "Doctor_Name": "Kush Goyal",
+       "Patient_Name":"Prajwal singh",
+       "Bill":"30000"
+    }
+]
